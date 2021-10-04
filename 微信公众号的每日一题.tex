@@ -1,0 +1,846 @@
+\documentclass{ctexart}
+\usepackage{ctex}
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\tcbuselibrary{most}%调用tcolorbox程序库
+\usepackage{geometry}
+\geometry{margin = 0.8in,top=0.8cm}
+\definecolor{shadecolor}{rgb}{0,1,0} 
+%\usepackage{draftwatermark}
+%\SetWatermarkText{\shortstack
+%	{微信公众号:小熊考研数学
+%}}
+%\SetWatermarkLightness{0.60}%设置水印亮度
+%\SetWatermarkScale{0.3}%设置水印大小
+
+\usepackage{framed}
+\date{\today}
+\author{小熊}
+\title{\textbf{一些笔记和题目}}
+\begin{document}
+	\maketitle
+
+
+	\section{数分上册一些要点}
+\begin{tcolorbox}[title = {归结原理},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	 	设$f(x)$是定义在$U^{o}(x_{0};\delta')$上的函数,则$\lim\limits_{x \to x_{0}}f(x)$存在的充分必要条件是:对任意数列${x_{n}}$包含在$U^{o}(x_{0};\delta')$且以$x_{0}$为极限,极限$\lim\limits_{n \to \infty}f(x_{n})$存在且相等。
+	 	\tcblower
+	 	{\color{red}必要性:} 已知$\lim\limits_{x \to x_{0}}f(x)=A$,即$\forall \varepsilon > 0$,存在$0< \delta <\delta'$,当$0 <\left|x-x_{0}\right| <\varepsilon$,有$\left|f(x)-A\right| < \varepsilon $,另外一方面,对任意的${x_{n}}$包含在$U^{o}(x_{0};\delta')$,且$\lim\limits_{n \to \infty}x_{n}=x_{0}$,对上述$\varepsilon >0$,$\exists N>0$,$n>N$时,有$0< \left|x_{n}-x_{0} \right| < \varepsilon$,即有$ \left|f(x_{n})-A\right| < \varepsilon$,说明$\lim\limits_{x \to \infty}f(x_{n})=A$
+	 	
+	 	{\color{red}充分性:} 用反证法$\left(\text{假设结论不成立推导出与已知条件矛盾,进而有结论成立} \right) $
+	 	
+	 	已知$\forall x_{n} \to x_{0}\left(x_{n} \ne x_{0} \right) $,有$f(x_{n}) \to A$,若$\lim\limits_{x \to x_{0}}f(x)\ne A$,存在$\varepsilon_{0} >0$对任意$0< \delta \le \delta' $,尽管$0< \left|x-x_{0} \right| < \delta$ ,但$\left|f(x)-A \right| \ge \varepsilon_{0}$,取$\displaystyle{\delta = \delta',\frac{\delta'}{2},\frac{\delta'}{3},\frac{\delta'}{4},\cdots,\frac{\delta'}{n}}$,则有相应的点$x_{1},x_{2},\cdots,x_{n},\cdots$,使得$0 < \left|x_{n}-x_{0}\right| < \delta$,但是$ \left|f(x_{n})-A\right| \ge \varepsilon_{0}$,现在数列$\{x_{n}\} \in U^{o}\left(x_{0};\delta\right) $,且$\lim\limits_{n \to \infty}x_{n}=x_{0}$,但是$n \to \infty$时,有$f(x)_{n} \to A$,这与已知相矛盾,故有$\lim\limits_{x \to x_{0}}f(x) = A$
+	 \end{tcolorbox}
+\begin{tcolorbox}[title = {f(x)一致连续的充要条件},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	   设$f(x)$在区间$I$上有定义,则$f(x)$在$I$上一致连续的充要条件为对任何数列$\left\{x'_{n}\right\},\left\{x''_{n}\right\}$,
+	   
+	   当$\lim\limits_{n \to \infty}\left(x'_{n}-x''_{n} \right) =0$,则有:$\lim\limits_{n \to \infty}f(x'_{n})-f(x''_{n})=0$
+	   
+	   \tcblower
+	   {\color{red}必要性:}\\若$f(x)$在区间上一致收敛,$\forall \varepsilon>0$,$\exists \delta >0$,任意$x',x'' \in I$,当$\left|x'-x''\right|<\delta$,有$\left|f(x')-f(x'')\right|< \varepsilon$,任何数列$\left\{x'_{n}\right\},\left\{x''_{n}\right\} \in I$,若$\lim\limits_{n \to \infty}\left(x'_{n}-x''_{n} \right) =0$,对于上面的$\delta$,$\exists N,n>N$时,有$\left|x'_{n}-x''_{n}\right|< \delta$,则有,$\left|f(x'_{n})-f(x''_{n})\right|< \varepsilon$成立,即:$\lim\limits_{n \to \infty}f(x'_{n})-f(x''_{n})=0$
+	   
+	   {\color{red}充分性:用反证法,与归结原理如出一辙} 
+	   
+	   假设$f(x)$不一致连续,则存在$\varepsilon_{0}$,任意$\delta>0$,存在$x',x'' \in I$,当$\left|x'-x''\right|< \delta$,但$\left |f(x')-f(x'')\right| 
+	   \ge \varepsilon_{0}$,现在取$\displaystyle{\delta=1,\frac{1}{2},\cdots,\frac{1}{n}}$,有$\left|x'_{n}-x''_{n}\right|< \frac{1}{n}$,即$\lim\limits_{n \to \infty}\left(x'_{n}-x''_{n} \right) =0$,但$\lim\limits_{n \to \infty}f(x'_{n})-f(x''_{n})\ne 0$,相矛盾！故$f(x)$一致连续!
+	\end{tcolorbox}
+	   
+	   \begin{tcolorbox}[title = {Cantor定理},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	   	
+	   	{\color{red}反证法}若$f(x)$不一致连续,则存在$\varepsilon_{0} > 0$,以及在$\left[a,b]\right]$上的数列$\left\{x_{n}\right\},\left\{y_{n}\right\}$,虽然$\lim\limits_{n \to \infty}\left(x_{n}-y_{n} \right)=0$,但$\left|f(x_{n})-f(y_{n})\right| \ge \varepsilon_{0}$,由于$\left\{x_{n}\right\}$有界,所以存在收敛子列,不妨设$\left\{x_{n}\right\}$收敛,设$\lim\limits_{n \to \infty}x_{n}=x_{0} \in [a,b]$,所以$\lim\limits_{n \to \infty}y_{n}=\lim\limits_{n \to \infty}\left[\left(y_{n}-x_{n} \right)+x_{n} \right]=x_{0}$,$\varepsilon_{0} \le \lim\limits_{n \to \infty} \left|x_{n}-y_{n}\right| =0 < $,矛盾,从而$f(x)$一致连续
+	   
+	   
+\end{tcolorbox}
+	\begin{tcolorbox}[title = {开区间,无穷区间上的连续与一致连续},colbacktitle=red!25!white,coltitle=black,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		1.设$f(x)$在有限开区间$\left(a,b\right) $上连续,试证明$f(x)$在$\left(a,b\right) $上一致连续的充要条件是极限:$$\lim\limits_{x \rightarrow a^{+}}f(x) {\text{和}} \lim\limits_{x \rightarrow b^{-}}f(x) {\text{存在}} $$
+		      \begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	      1.$\left[{\color{red}\text{必要性}}\right]$:由$f(x)$在$\left(a,b \right) $上一致连续,$\forall \varepsilon$,$\exists \delta>0$,对$\forall x',x'' \in \left(a,b \right) $,当$a<x'<a+ \delta,a<x''<a+\delta$时,即$\left|x'-x''\right|<\delta$时,有$\left|f(x')-f(x'')\right|< \varepsilon$,据$Cauchy$准则,可知$f(x)$在点$a+0$处的极限存在,同理$\lim\limits_{x \rightarrow b^{-}}f(x) {\text{存在}}$
+	      
+	       2.$\left[{\color{red}\text{充分性}}\right]$:补充定义:$f(a)=\lim\limits_{x \rightarrow a^{+}},f(b)=\lim\limits_{x \rightarrow b^{-}}f(x)$,则$f(x)$在$\left[a,b\right]$一致连续,从而$f(x)$在$\left(a,b \right) $上一致连续
+		\end{tcolorbox}
+	\begin{tcolorbox}[title =补充,colbacktitle=blue!50,colback=white,coltitle=red,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		 1.连续函数在开区间一致连续,取决于在端点处的状态。在开区间$\left(a,b \right) $上一致连续,从而有界,但是反过来不一定成立,在开区间上连续且有界,但不一定一致连续
+	\end{tcolorbox}
+  2.证明:若:$f(x)$在$\left[a,+\infty\right) $上连续,且$\lim\limits_{x \rightarrow \infty}=A\left( {\text{有限}}\right) $,则$f(x)$在$\left[a,+\infty\right) $上一致连续
+    \end{tcolorbox}
+	\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+    
+      1.设$\displaystyle{A_{n}=\frac{n}{n^{2}+1}+\frac{n}{n^{2}+2^{2}}+\cdots+\frac{n}{n^{2}+n^{2}}}$,求$\displaystyle{\lim\limits_{n \to \infty} n\left(\frac{\pi}{4} - A_{n} \right)}$
+      \begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+
+      	$$
+      	\begin{aligned}
+      		&\text { 解:令 } f(x)=\frac{1}{1+x^{2}}, \text { 则 } \\
+      		&\qquad \begin{aligned}
+      			& \lim _{n \rightarrow \infty} n\left(\frac{\pi}{4}-A_{n}\right)=\lim _{n \rightarrow \infty} n\left[\int_{0}^{1} \frac{1}{1+x^{2}} \mathrm{~d} x-\frac{1}{n} \sum_{i=1}^{n} \frac{1}{1+\left(\frac{i}{n}\right)^{2}}\right) \\
+      			&=\lim _{n \rightarrow \infty} n \sum_{i=1}^{n} \int_{\frac{i-1}{n}}^{\frac{i}{n}}\left(\frac{1}{1+x^{2}}-\frac{1}{1+\left(\frac{i}{n}\right)^{2}}\right) \mathrm{d} x=\lim _{n \rightarrow \infty} n \sum_{i=1}^{n} \int_{\frac{i-1}{n}}^{\frac{i}{n}}\left[f(x)-f\left(\frac{i}{n}\right)\right] \mathrm{d} x \\
+      			&=\lim _{n \rightarrow \infty} n \sum_{i=1}^{n} \int_{\frac{i-1}{n}}^{\frac{i}{n}}\left[\frac{f(x)-f\left(\frac{i}{n}\right)}{x-\frac{i}{n}}\left(x-\frac{i}{n}\right)\right] \mathrm{d} x
+      		\end{aligned}
+      	\end{aligned}
+      	$$
+      	由积分第一中值定理:
+      	$$
+      	\text { (1) 式 }=\lim _{n \rightarrow \infty} n \sum_{i=1}^{n} \frac{f\left(\xi_{i}\right)-f\left(\frac{i}{n}\right)}{\xi_{i}-\frac{i}{n}} \int_{\frac{i-1}{n}}^{\frac{i}{n}}\left(x-\frac{i}{n}\right) \mathrm{d} x \quad\left(\frac{i-1}{n}<\xi_{i}<\frac{i}{n}\right)
+      	$$
+      	再根据拉格朗日中值定理可得:
+      	$$
+      	\begin{aligned}
+      		&\lim _{n \rightarrow \infty} n \sum_{i=1}^{n} f^{\prime}\left(\eta_{i}\right) \int_{\frac{i-1}{n}}^{\frac{i}{n}}\left(x-\frac{i}{n}\right) \mathrm{d} x \quad\left(\frac{i-1}{n}<\eta_{i}<\frac{i}{n}\right) \\
+      		&=-\lim _{n \rightarrow \infty}n \sum_{i=1}^{n} \frac{1}{2 n^{2}} f^{\prime}\left(\eta_{i}\right)=-\frac{1}{2} \lim _{n \rightarrow \infty} \sum_{i=1}^{n} \frac{1}{n} f^{\prime}\left(\eta_{i}\right) \\
+      		&=-\frac{1}{2} \int_{0}^{1} f^{\prime}(x) \mathrm{d} x=\frac{f(0)-f(1)}{2}=\frac{1}{4}
+      	\end{aligned}
+       $$  
+      \end{tcolorbox}
+   2.已知$\displaystyle{a_{n+1}=a_{n}+\frac{1}{a_{n}}}$,回答下面问题:\\	
+  $(1)$若$a_{1}>1$,证明$\displaystyle{\lim\limits_{n \to \infty}\frac{a_{n}}{\sqrt{2n}}}=1$ \\
+  $(2)$若$a_{1}>0$,判断级数$\displaystyle{\sum_{n=1}^{\infty}a_{n}^{\alpha}}$的敛散性,其中$\alpha$是常数
+\end{tcolorbox}
+  \begin{tcolorbox}[title =补充,colbacktitle=blue!50,colback=white,coltitle=red,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	1.裴礼文《数学分析中的典型问题与方法》$P_{312}$, 例 $4.1 .8$ ). 设 $f(x)$ 在 $[a, b]$ 上可导, $f^{\prime}(x)$ 在 $[a, b]$ 可积, $\forall n \in N$, 记
+	$$
+	\begin{array}{r}
+		A_{n}=\displaystyle{\sum\limits_{i=1}^{n} f\left(a+i \frac{b-a}{n}\right) \frac{b-a}{n}-\int_{a}^{b} f(x) \mathrm{d} x} . \\
+	\end{array}
+	$$	
+	试证: $\displaystyle{ \lim _{n \rightarrow \infty} n A_{n}=\frac{b-a}{2}[f(b)-f(a)]}$
+	\tcblower
+	2. {\color{red}引理}\quad 若 $g(x)$ 在 $[a, b]$ 上不变号, $h(x)$ 在 $[a, b]$ 上的值域 $ \subseteq[a, b], f(x)$ 在 $[a, b]$ 上可导且导 函数有界,则 $\exists \xi \in(a, b)$, 使得
+	$$
+	\int_{a}^{b} f^{\prime}(h(x)) g(x) \mathrm{d} x=f^{\prime}(\xi) \int_{a}^{b} g(x) \mathrm{d} x
+	$$
+	证明:因为$f(x)$在$[a,b]$上有界,且$h(x) \subset [a,b]$,不放设:
+	$$m \le f'\left( h(x)\right) \le M$$其中$m =\min\limits_{x \in [a,b]}f'(h(x))$,$M =\max\limits_{x \in [a,b]}f'(h(x))$
+	
+	由$g(x)$不变号,不妨设$g(x) > 0 $,则:
+	$$
+	m \int_{a}^{b} g(x) \mathrm{d} x \le \int_{a}^{b} f^{\prime}(h(x)) g(x) \mathrm{d} x \le M \int_{a}^{b} g(x) \mathrm{d} x
+	$$
+	$(i)$若$m < M$,令$f'(c)=m,f'(d)=M$,则$g(x)$不变号,由$Darboux$定理(导函数介质定理)可知,$\exists \eta \in \left( c,d\right)  \subset [a,b],s.t$
+	$$\int_{a}^{b}f'(h(x))g(x)dx = f'(\eta) \int_{a}^{b}g(x)dx$$
+	$(ii)$若$m=M$,则$f'(x) \equiv C$(常数),则必然存在$\eta \in \left(a,b \right),s.t$
+	$$\int_{a}^{b}f'(h(x))g(x)dx = f'(\eta) \int_{a}^{b}g(x)dx$$
+	
+\end{tcolorbox}
+	\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	
+		2.求以下极限
+	$$\lim_{n \to \infty} \left(1-\frac{1}{1+2}\right)\left(1-\frac{1}{1+2+3}\right) \cdots\left(1-\frac{1}{1+2+\cdots+n}\right)$$
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}证明:}
+	本道题写出式子通项,连乘一般都与阶乘有关,解析如下: \\
+	$$\prod_{k=2}^{n}\left ( 1-\frac{1}{1+\cdots+k}\right ) = \prod_{k=2}^{n}\left ( 1-\frac{1}{\frac{k\left (k+1  \right ) }{2} }\right )=\prod_{k=2}^{n}\left ( 1-\frac{2}{k\left (k+1 \right) } \right)=\prod_{k=2}^{n}\left ( \frac{\left( k+2\right)\left(k-1\right)}{k\left(k+1 \right)} \right) $$ \\
+	$$ \Rightarrow \prod_{k=2}^{n}\left(\frac{(k+2)(k-1)}{k(k+1)}\right)=\frac{\frac{\left (n+2 \right)!}{6}\cdot \small \left ( n-1\right)!}{\small n!\frac{\left (n+1\right )!}{2}}=
+	\frac{\small\left (n+2 \right )\cdot \large \frac{1}{n}}{\small3} \Rightarrow\lim_{n \to \infty} 
+	\frac{\small \left (n+2 \right )\cdot \large \frac{1}{n}}{\small 3}=\small \frac{1}{3}   $$  
+	\end{tcolorbox}
+   3.已知$a_{1}=\frac{1}{3},a_{n+1}=\displaystyle{\frac{1}{3}+\frac{a^{2}_{n}}{3}}$,求$\lim\limits_{n \to +\infty}a_{n}$
+   
+   	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   	{\color{red}证明:}
+   	 首先利用数学归纳法得出有界性,单调性:
+   	   $$a_{n+1}-a_{n}=\frac{1}{3}\left(a_{n}+a_{n-1}\right) \left(a_{n}-a_{n-1} \right) $$
+   	   一直地推下去,$a_{n}-a_{n-1}$与$a_{2}-a_{1}$符号号相同,而$a_{2}-a_{1}=\frac{1}{27} > 0$
+   	   
+   	   故$\{a_{n}\}$单调递增有上界,设极限为$a$,两边取极限且$a \in [0,1]$,$$\Rightarrow a=\frac{3-\sqrt{5}}{2} $$
+   \end{tcolorbox}
+   4.求以下极限
+   $$\lim _{n \rightarrow \infty} \sum_{k=1}^{n} \frac{n}{n^{2}+k} \ln \left(1+\frac{k}{n}\right)$$
+   5.求以下极限
+   $$\lim _{n \rightarrow \infty} \sum_{k=1}^{n} \frac{k}{n^{2}+k} \ln \left(1+\frac{k}{n}\right)$$
+     \begin{tcolorbox}[title =补充,colbacktitle=blue!85!white,colback=white,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+
+   	 $$	\int\frac{1}{1+t^{3}}  dt=\frac{1}{2}\left [  \int \left(\frac{1}{1+t}+\frac{1}{t^{2}+1-t}-\frac{t^{2}}{1+t^{3}} \right)dt\right ] $$
+   	最后一项用一个凑微分\\
+   	类似有
+   	$$	\int\frac{1}{1+t^{4}} dt $$
+   	解析:变形1如下:
+   	$$\frac{1}{1+t^{4}}=\frac{1}{2}\cdot\frac{1+t^{2}}{1+t^{4}}+\frac{1}{2}\cdot\frac{1-t^{2}}{1+t^{4}}=\frac{1}{2}\cdot\frac{1+\frac{1}{t^{2}}}{\frac{1}{t^{2}}+t^{2}}+\frac{1}{2}\cdot\frac{\frac{1}{t^{2}}-1}{\frac{1}{t^{2}}+t^{2}}$$
+   \end{tcolorbox}
+  
+    
+    \end{tcolorbox}
+
+	
+
+	\section{数项级数}
+% \begin{tcolorbox}[title = {预备知识},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+%      
+%\end{tcolorbox}
+ \begin{tcolorbox}[title = {求和问题},colbacktitle=red!35!white,colback=white,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 求$$\sum_{n=1}^{\infty} q^{n} cos(2n-1)x\left(-1 < q <1 \right) $$
+	接下介绍两种办法:\\
+	1. $Euler$公式(复数取实部):
+	\begin{align*}
+		\sum_{n=1}^{\infty} q^{n} \cos (2 n-1) x &= 
+		\sum_{n=1}^{\infty} q^{n} \frac{\mathrm{e}^{\mathrm{i}(2 n-1) x}+\mathrm{e}^{-i(2 n-1) x}}{2}  \\
+		&=\frac{1}{2} \mathrm{e}^{-\mathrm{i} x} \sum_{n=1}^{\infty}\left(q \mathrm{e}^{2 \mathrm{i} x}\right)^{n}+\frac{1}{2} \mathrm{e}^{\mathrm{i} x} \sum_{n=1}^{\infty}\left(q \mathrm{e}^{-2 \mathrm{i} x}\right)^{n} \\
+		& =\frac{1}{2} e^{-i x} \frac{q e^{2 i x}}{1-q e^{2 i x}}+\frac{1}{2} e^{i x} \frac{q \mathrm{e}^{-2 i x}}{1-q \mathrm{e}^{-2 i x}}=\\
+		&=\frac{q\left(\frac{e^{i x}+e^{-i x}}{2}\right)-q^{2}\left(\frac{e^{i x}+e^{-i x}}{2}\right)}{\left(1-q e^{2 i x}\right)\left(1-q \mathrm{e}^{-2 i x}\right)} \\
+		&=\frac{q \cos x-q^{2} \cos x}{1-2 q \cos 2 x+q^{2}}=\frac{q(1-q) \cos x}{1-2 q \cos 2 x+q^{2}}
+	\end{align*}
+ 原式:
+  $$
+  \sum_{n=1}^{\infty} q^{n} \cos (2 n-1)x=\frac{q(1-q) \cos x}{1-2 q \cos 2x+q^{2}}
+  $$
+  2.方程法:
+    记$$ S_{n}=\sum_{k=1}^{n} q^{k} cos(2k-1)x$$则
+   \begin{align*}
+     2qcos2x \cdot S_{n} &=\sum_{k=1}^{n} 2q^{k+1} cos(2k-1)x \cdot cos2x\\ &=\sum_{k=1}^{n} q^{k+1}[\left( cos(2k-3)x+cos(2k+1)x\right)] \\
+      \Rightarrow 2qcos2x \cdot S_{n} &=q^{2}cosx+q^{2}S_{n}-q^{n+1}cos(2n+1)-qcos+S_{n}+q^{n+1}cos(2n+1)x \\
+      \Rightarrow S_{n}&=\frac{q^{n+1}cos(2n+1)x-q^{n+1}cos(2n-1)x+q(1-q)cosx}{1+q^{2}-2qcos2x}
+    \end{align*}
+两边关于$n \to \infty$取极限,即:
+ $$
+\sum_{n=1}^{\infty} q^{n} \cos (2 n-1)x=\frac{q(1-q) \cos x}{1-2 q \cos 2x+q^{2}}
+$$
+\end{tcolorbox}
+\begin{tcolorbox}[title = {求和问题},colbacktitle=red!35!white,colback=white,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+  1.设$x \in [0,\pi]$,试求如下级数之和$$\sum_{n=1}^{\infty}\frac{sinnx}{x}$$
+  1).$x=0$时,级数之和明显为零\\
+  2).$0 < x \le \pi$,设其部分和为$S_{n}(x)=\sum\limits_{k=1}^{n}\frac{sinkx}{k}$,$\lim\limits_{n \to \infty }S_{n}(x) =S(x)$,另一方面$S'_{n}(x)=\sum\limits_{k=1}^{n}coskx$,又因为
+  \begin{align*}
+  	 \sum\limits_{k=1}^{n}coskx=\frac{1}{2sin\frac{x}{2}} \sum\limits_{k=1}^{n}2sin\frac{x}{2}coskx&=\frac{1}{2sin\frac{x}{2}}\sum\limits_{k=1}^{n} \left[sin\left( \frac{1}{2}+k\right) x-sin\left( k-\frac{1}{2}\right) x\right]\\
+  	  &=\frac{sin\left(n+\frac{1}{2}\right)x-sin\frac{x}{2} }{2sin\frac{x}{2}}=\frac{sin\left(n+\frac{1}{2}\right)x}{2sin\frac{x}{2} }-\frac{1}{2}
+  \end{align*}
+所以:
+  $$S_{n}(x)=S_{n}(x)-S_{n}(\pi)=-\int_{x}^{\pi}\left(\frac{sin\left(n+\frac{1}{2}\right)x}{2sin\frac{x}{2} }-\frac{1}{2} \right)dx $$
+  上式两端关于$n \to \infty$求极限,根据$Reimann$引理,左边第一项为零,所以
+   $$\lim\limits_{n \to \infty }S_{n}(x) =S(x)=\frac{1}{2}\left(\pi-x \right) $$
+  $$ S_{n}(x)=\left\{\begin{matrix} 
+   	0,&x=0 \\  
+   	\frac{1}{2}(\pi-x),&x \in(0,\pi ]
+   \end{matrix}\right. 
+$$
+
+\tcblower
+2. 将$f(x)=e^x$在$\left(-\pi , \pi \right) $展成傅里叶级数,并求$\displaystyle{\sum_{n=1}^{\infty}\frac{1}{1+n^2}}$\\
+  {\color{red}证明:} 展成以$2\pi$为周期的函数$F(x)$,则
+       $$
+       \begin{aligned}
+       	a_{0} &=\frac{1}{\pi} \int_{-\pi}^{\pi} F(x) \mathrm{d} x=\frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \mathrm{d} x \\
+       	&=\frac{1}{\pi} \int_{-\pi}^{\pi} e^{x} \mathrm{~d} x=\frac{1}{\pi}\left(e^{\pi}-e^{-\pi}\right) \\
+       	a_{k} &=\frac{1}{\pi} \int_{-\pi}^{\pi} F(x) \cos k x \mathrm{~d} x \\
+       	&=\frac{1}{\pi} \int_{-\pi}^{\pi} e^{x} \cos k x \mathrm{~d} x=(-1)^{k} \frac{e^{\pi}-e^{-\pi}}{\left(1+k^{2}\right) \pi} \\
+       	b_{k} &=\frac{1}{\pi} \int_{-\pi}^{\pi} F(x) \sin k x \mathrm{~d} x=\frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin k x \mathrm{~d} x \\
+       	&=\frac{1}{\pi} \int_{-\pi}^{\pi} e^{x} \sin k x \mathrm{~d} x=\frac{(-1)^{k} k}{\left(1+k^{2}\right) \pi}\left(e^{\pi}-e^{-\pi}\right)
+       \end{aligned}
+       $$
+       所以得
+       $$
+       \begin{aligned}
+       	&\begin{aligned}
+       		e^{x}=& \frac{1}{2 \pi}\left(e^{\pi}-e^{-\pi}\right) 
+       		+ \frac{e^{\pi}-e^{-\pi}}{\pi} \sum_{k=1}^{\infty}\left(\frac{(-1)^{k}}{\left(1+k^{2}\right)} \cos k x+\frac{(-1)^{k} k}{1+k^{2}} \sin k x\right) \\
+       		&(-\pi<x<\pi) \\
+       		\text { 令 } x=& \pi, \text { 得 } \sum_{n=1}^{\infty} \frac{1}{1+n^{2}}=\frac{1}{2}\left(\pi \frac{e^{2 \pi}+1}{e^{2 \pi}-1}-1\right)
+       	\end{aligned}
+       \end{aligned}
+       $$
+  
+\end{tcolorbox}
+\begin{tcolorbox}[title = {$Reimann$引理},colbacktitle=blue!85!white,colback=white,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	1. 若$f(x)$为可积函数,则$$\lim_{n \to \infty}\int_{-\pi}^{\pi}f(x)sinnxdx=0 \quad \lim_{n \to \infty}\int_{-\pi}^{\pi}f(x)cosnxdx=0 $$
+$$\lim_{n \to \infty}\int_{0}^{\pi}f(x)sin\left(n+\frac{1}{2} \right)xdx=0 \quad \lim_{n \to \infty}\int_{-\pi}^{0}f(x)sinx\left(n+\frac{1}{2} \right) xdx=0 $$
+\end{tcolorbox}
+
+\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]	
+	1.若$a_{n} > 0$,$S_{n}=a_{1}+a_{2}+ \cdots +a_{n}$,$\sum\limits_{n=1}^{\infty}a_{n}$发散,讨论$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{p}}}$敛散性.特别的,证明$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{2}}}$收敛,,$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}}}$发散,并进行这两者之间的比较.\\
+		\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}证明:此题非常重要,记住结论和证明过程的思路}
+		
+	由$\displaystyle{\sum_{n=1}^{\infty} {a_{n}}}$发散,可知$S_{n}$单调递增趋于$+\infty$,下面对$p$进行分类讨论:
+	
+	(i)$p \le 0$时,{\color{red}放缩思路},明显存在$N$,当$n>N$时,有$\displaystyle{\frac{a_{n}}{S_{n}^{p}} \ge a_{n}}$,从而原级数发散.
+	
+	(ii)$0 < p \le 1$时,有$\displaystyle{\frac{a_{n}}{S_{n}^{p}} \ge \frac{a_{n}}{S_{n}}}$,下面用{\color{red}$Cauchy$准则}来说明$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}}}$发散.
+	
+    取$\varepsilon_{0}=\frac{1}{2}$,对于$\forall N$,特别的取$n_{0}=N+1>N$,另一面由$\lim\limits_{n \to \infty}S_{n}=+\infty$,则:
+    $$\lim_{p \to +\infty}\frac{S_{n_{0}}}{S_{n_{0}}+p}=0$$
+    可知存在正整数$p_{0}$,使得$\displaystyle{\frac{S_{n_{0}}}{S_{n_{0}}+p_{0}}} <\frac{1}{2}$,于是:
+    
+    $$\sum_{k=n_{0}+1}^{n_{0}+p_{0}}\frac{a_{k}}{S_{k}} \ge \frac{1}{S_{n_{0}+p_{0}}}\sum_{k=n_{0}+1}^{n_{0}+p_{0}}a_{k}=\frac{1}{S_{n_{0}+p_{0}}}\sum_{k=n_{0}+1}^{n_{0}+p_{0}}S_{k}-S_{k-1}=\frac{S_{n_{0}+p_{0}}-S_{n_{0}}}{S_{n_{0}+p_{0}}} \ge \varepsilon_{0} $$
+	从而由$Cauchy$准则可知,$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}}}$发散.
+	
+	(iii)$p > 1$时,我们利用{\color{red}正项级数部分和有上界}来说明级数$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{p}}}$收敛.
+	
+     $$\sum_{k=1}^{n}\frac{a_{k}}{S_{k}^{p}}=\frac{a_{k}}{S_{1}^{p}}+\sum_{k=2}^{n}\int_{S_{k-1}}^{S_{k}}\frac{1}{S_{k}^{p}}dx \le
+      \frac{1}{a_{1}^{p-1}}+\sum_{k=2}^{n}\int_{S_{k-1}}^{S_{k}}\frac{1}{x^{p}}dx  \le  \frac{1}{a_{1}^{p-1}} +\int_{a_{1}}^{+\infty}\frac{1}{x^{p}}dx < +\infty $$
+      可知,级数部分和有上界,从而$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{p}}}$收敛.
+      
+$$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{p}}} \Rightarrow
+     \begin{cases}
+      	{\text{发散.}}p \le 0\\
+      	{\text{发散.}}0<p\le 1\\
+      	{\text{收敛.}}p>1
+      	
+      \end{cases}
+$$
+	\end{tcolorbox}
+
+
+	\end{tcolorbox}
+
+\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+			对于级数$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}}}$,$a_{n} >0,S_{n} \nearrow +\infty$,所以$$\lim_{p \rightarrow +\infty}\frac{S_{n}}{S_{n+p}}=0$$所以存在充分大的$p \in N$,使得$\displaystyle{\frac{S_{n}}{S_{n+p}} < \frac{1}{2}}$
+			取$\displaystyle{\varepsilon_{0}=\frac{1}{2}}$,$\forall n> N$,都有充分大的整数p,使得
+			$$\sum_{k=n+1}^{n+p}\frac{a_{n}}{S_{n}}\ge \frac{\sum\limits_{k=n+1}^{n+p}a_{k}}{S_{n+p}}=\frac{\sum\limits_{k=n+1}^{n+p}S_{k}-S_{k-1}}{S_{n+p}}=\frac{S_{n+p}-S_{n}}{S_{n+p}} >\varepsilon_{0}=\frac{1}{2}$$
+	      \tcblower
+		对于级数$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{2}}}$,思路就是证正项级数部分和有界。
+		$$S_{n}=\sum_{k=1}^{n}\frac{a_{k}}{S_{k}^{2}} \le \frac{1}{S_{1}} + \sum_{k=2}^{n}\frac{S_{k}-S_{k-1}}{S_{k}S_{k-1}}=\frac{1}{S_{1}}+\sum_{k=2}^{n}\left(\frac{1}{S_{k-1}}-\frac{1}{S_{k}}\right) \le \frac{2}{S_{1}} $$
+		级数$\displaystyle{\sum_{n=1}^{\infty}\frac{a_{n}}{S_{n}^{2}}}$部分和有界,从而收敛。
+		
+	\end{tcolorbox}
+2.设级数$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,$\displaystyle{\sum_{n=1}^{\infty}\left(b_{n+1}-b_{n} \right)}$绝对收敛,证明$\displaystyle{\sum_{n=1}^{\infty}a_{n}b_{n}}$收敛.\\
+\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   由于$\displaystyle{\sum_{n=1}^{\infty}\left(b_{n+1}-b_{n} \right)}$绝对收敛,从而收敛,可知$\lim\limits_{n \rightarrow \infty}\sum\limits_{k=1}^{n}(b_{k+1}-b_{k})=\lim\limits_{n \rightarrow \infty}(b_{n+1}-b_{1})$存在,从而$\lim\limits_{n \rightarrow \infty}b_{n}$存在,进而$b_{n}$有界,设$\left|b_{n}\right| \le M$
+   
+   另一方面,由$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,由$Cauchy$准则可知,对任意$\varepsilon$,存在$N_{1}$,任意$n>N_{1}$以及整数k,使得$\left|S_{k}\right|=\left|\sum\limits_{i=n+1}^{n+k}a_{i}\right| < \varepsilon$,由$\displaystyle{\sum_{n=1}^{\infty}\left(b_{n+1}-b_{n} \right)}$绝对收敛,对上述的$M$,存在$N_{2}$,对任意的$n > N_{2}$以及整数m,使得$\sum\limits_{k=n+1}^{n+p}\left|b_{k+1}-b_{k}\right|<M$
+   
+   现取$N=max\{N_{1},N_{2}\}$,对任意$n>N$以及整数p,由$Abel$公式可知:
+   $\left|\sum\limits_{k=n+1}^{n+p}a_{k}b_{k}\right|=\left|\sum\limits_{k=n+1}^{n+p-1}S_{k}(b_{k}-b_{k+1})+S_{n+p}b_{n+p}\right| < \varepsilon \left|\sum\limits_{k=n+1}^{n+p-1}(b_{k}-b_{k+1})\right| + \varepsilon \left|b_{n+p}\right| <2M \varepsilon$
+   
+   由柯西准则可知,$\displaystyle{\sum_{n=1}^{\infty}a_{n}b_{n}}$收敛.
+\end{tcolorbox}
+	3.证明级数:$\displaystyle{\sum_{n=1}^{\infty}\frac{1}{\left(\ln n \right)^{\ln n} }}$收敛$\left(\text{武汉大学}\right) $\\
+	
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}证明:} 根据$\displaystyle{a^{\ln b}=b^{\ln a}}$,所以当$n$充分大的时候,有$\displaystyle{\frac{1}{\left(\ln n \right)^{\ln n} }< \frac{1}{n^{2}}}$,由比较原则可得,原级数收敛.
+	\end{tcolorbox}
+	4.(东南大学)已知$a_{1} > 0$,且$\displaystyle{a_{n+1}=\frac{1}{2}\left(a_{n}+\frac{4}{a_{n}}\right)}$,证明:\\
+	\end{tcolorbox}
+\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	(1)证明$\{a_{n}\}$收敛 \\
+	(2)判断级数$\displaystyle{\sum\limits_{n=1}^{\infty}\left(\frac{a_{n}}{a_{n+1}} -1\right) }$的敛散性\\
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}证明:} 1.首先$a_{n} > 0$,再由基本不等式可知,$a_{n} \ge 2$,另一面$$a_{n+1}-a_{n}=\frac{(2+a_{n})(2-a_{n})}{2a_{n}} \le 0$$故$\{a_{n}\}$单调递减有下界,从而收敛.\\
+		2.由$(1)$可知,$\lim\limits_{n \to \infty}a_{n}=a > 0$,又由${a_{n}}$单调递减,可知$a_{n} > a $,正项级数,考虑级数部分和为:
+		$$S_{n}=\sum_{k=1}^{n}\left(\frac{a_{n}}{a_{n+1}} -1\right) \le \frac{1}{a}\sum_{k=1}^{n}\left(a_{k}-a_{k+1} \right) \le\frac{a_{1}}{a} $$
+		级数部分和有界,故$\displaystyle{\sum\limits_{n=1}^{\infty}\left(\frac{a_{n}}{a_{n+1}} -1\right) }$收敛
+		
+	\end{tcolorbox}
+	5.讨论下面级数:
+	$$\sum_{n=1}^{\infty}a_{n}=\frac{1}{1^{p}}-\frac{1}{2^{q}}+\frac{1}{3^{p}}-\frac{1}{4^{q}}+ \cdots + \frac{1}{(2n-1)^{p}}+\frac{1}{(2n)^{q}}$$
+	$\left( q > 0,q > 0\right) $的绝对收敛和条件收敛性(复旦大学).
+      \begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+  	{\color{red}证明:}\\
+  	1.若$p,q>1$,则$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$绝对收敛,因为不管哪个大,如$q>p$,$\displaystyle{\sum_{n=1}^{\infty}\left |a_{n}\right |} $有优级数$\displaystyle{\sum_{n=1}^{\infty}\frac{1}{n^{q}}}$。\\
+  	2.若$0<p=q \le 1$,应用$Leibniz$定理知级数收敛.且是条件收敛.\\
+  	3.当$p,q>0$,$\left(\text{通项趋于零} \right)$,原级数跟级数$$\sum_{n=1}^{\infty}\left( \frac{1}{\left(2n-1\right)^{p} }-\frac{1}{\left(2n\right)^{q} }\right) $$同敛散.\\
+  	(1)不管$q>1,0< q \le 1$,$p>1,0< q \le 1$,都会有一敛一散
+  	
+  	(2)若$0<q<p<1$,$\displaystyle{\frac{1}{(2n-1)^{p}}-\frac{1}{(2n)^{q}} > 0}$,与$\displaystyle{\frac{1}{(2n-1)^{p}}}$同阶,故原级数发散,$0<p<q<1$类似
+  	
+  \end{tcolorbox}
+	
+   6.讨论级数:
+	$\displaystyle{\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^{p+\frac{1}{n}}}}$的敛散性.\\
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}证明:}\\
+		1.当$p \le 0$,通项极限不为0,故发散.\\
+		2.当$p > 1$,因为$\displaystyle{\frac{1}{n^{p+\frac{1}{n}}} < \frac{1}{n^{p}}}$,故绝对收敛.\\
+		3.当$0 < p \le 1$,$\displaystyle{\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^{p}}}$收敛,$\displaystyle{\frac{1}{n^{\frac{1}{n}}}}$单调有界,由$Abel$判别法可知,原级数收敛,但不是绝对收敛.加绝对值跟$\displaystyle{\frac{1}{n^{p}}}$比值取极限,条件收敛
+	\end{tcolorbox}
+	7.设级数$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,$a_{n}\searrow 0 $,证明$\lim\limits_{n \to \infty} na_{n}=0$\\
+\end{tcolorbox}
+   \begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   		8.设$a_{n} > 0$, $\sum\limits_{n=1}^{\infty}a_{n}$收敛,$na_{n}$单调,证明:
+   	$\displaystyle{\lim_{n \to \infty}na_{n}\ln n =0}$
+   	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   		{\color{red}证明:}
+   		
+   		7.要证$\lim\limits_{n \to \infty}na_{n}=0$,即$\forall \varepsilon$,有$0 \le na_{n} < \varepsilon$,另$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,由$Cauchy$准则,可知: $\forall \varepsilon,\exists N,n>N$时:
+   		
+   		$$
+   		\begin{aligned}
+   			0 < a_{N+1}+a_{N+2}+\cdots+a_{n}& <\frac{\varepsilon}{2}\\
+   			\left(n-N\right)a_{n} \le a_{N+1}+a_{N+2}+\cdots+a_{n}& <\frac{\varepsilon}{2}
+   		\end{aligned}
+   		$$
+   		特别的,令$n=2N$,有$\left(2N-N\right)a_{2N} < \frac{\varepsilon}{2}$,故当$n>2N$时:
+   		$$
+   		\begin{aligned}
+   			na_{n} & = \left(n-N \right)a_{n}+\left(2N-N\right)a_{n} \\
+   			& < \left(n-N \right)a_{n}+\left(2N-N\right)a_{2N}<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+   		\end{aligned}
+   		$$
+   		\tcblower    
+   		8:根据题意可知$na_{n}$单调$\searrow 0$
+   		另一方面,$\sum\limits_{n=1}^{\infty}a_{n}$收敛,根据$Cauchy$准则,$\forall \varepsilon > 0,\exists N$,使得$n$充分大的时候,$[\sqrt{n}] > N$,有:
+   		   		$$
+   		\begin{aligned}
+   			\frac{\varepsilon}{2} &>\left|\sum_{k=[\sqrt{n}]}^{n-1} a_{k}\right|=\left|\sum_{k=[\sqrt{n}]}^{n-1} \frac{1}{k} \cdot k a_{k}\right| \\
+   			& \ge na_{n} \sum_{k=[\sqrt{n}]}^{n-1} \frac{1}{k} \ge n a_{n} \sum_{k=[\sqrt{n}]}^{n-1} \int_{k}^{k+1} \frac{1}{x} \mathrm{~d} x \left({\text{因为}}\int_{k}^{k+1} \frac{1}{x} \mathrm{~d} x=\ln\left(1+\frac{1}{k} \right)< \frac{1}{k} \right)  \\
+   			&=n a_{n} \int_{[\sqrt{n}]}^{n} \frac{1}{x} \mathrm{~d} x \ge n a_{n} \int_{\sqrt{n}}^{n} \frac{1}{x} \mathrm{~d} x=\frac{1}{2} n a_{n} \ln n
+   		\end{aligned}
+   		$$
+   		$\Rightarrow \lim\limits_{n \to \infty}na_{n}\ln n =0 $		
+   	\end{tcolorbox}
+   	\begin{tcolorbox}[title = {类似},colbacktitle=green!35!black,colback=white,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+
+   		1.已知$\displaystyle{\int_{a}^{+\infty}f(x)dx}$收敛,$xf(x) \searrow$在$[a,+\infty)$,证明:$\lim\limits_{x \to +\infty} xf(x) \ln x=0$
+   		
+   		2.$f(x)$在$[a,+\infty)$上$\searrow$,且$\displaystyle{\int_{a}^{+\infty}f(x)dx}$收敛,证明:$\lim\limits_{x \to \infty}xf(x)=0$
+   		    	{\color{red}证明:}
+   		
+   		(1).
+   		由$\displaystyle{\int_{a}^{+\infty}f(x)dx}$收敛,$x$充分大的时候,$\forall \varepsilon$,有$\sqrt{x} > A> a$,由$Cauchy$准则:
+   		$$
+   		\begin{aligned}
+   			\frac{\varepsilon}{2}>\int_{\sqrt{x}}^{x}f(t)dt =\int_{\sqrt{x}}^{x}tf(t) \cdot \frac{1}{t}dt 
+   			&=\xi f(\xi) \int_{\sqrt{x}}^{x}\frac{1}{t}dt \left(\sqrt{x} <\xi < x \right) \\  
+   			& \ge \frac{1}{2}xf(x)\ln x
+   		\end{aligned} $$
+   		\tcblower
+   		(2).一方面,必有$f(x) \ge 0$,否则$\exists x_{1},s.t:f(x_{1}) < 0 $,对于$x > x_{1}$,有$f(x) < f(x_{1})<0$,则$f(x)$发散,与题目矛盾。
+   		另一方面,由$\displaystyle{\int_{a}^{+\infty}f(x)dx}$收敛,可知对$\forall \varepsilon ,\exists A > 0$,任意$A'' > A'> A$
+   		有$\displaystyle{\int_{A'}^{A''}f(x)dx} < \frac{\varepsilon}{2}$,当$x > 2A$,时
+   		$\displaystyle{0 \le xf(x) \le 2\int_{\frac{x}{2}}^{x}f(t)dt} < \varepsilon$,证毕！
+   	\end{tcolorbox}
+    \end{tcolorbox}
+ \begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 	   	9.设正项级数$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,试证:
+ 	$$\lim_{n \to \infty}\frac{\sum\limits_{k=1}^{\infty}ka_{k}}{n}=0$$
+ 	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 		{\color{red}证明:}
+ 		
+ 		由正项级数$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,部分和设为:$S_{n}=\sum\limits_{k=1}^{n}a_{k}$,$\lim\limits_{n \to \infty}S_{n}=S$,由$Abel$变换:
+ 		
+ 		$$\sum\limits_{k=1}^{n}ka_{k}=\sum\limits_{k=1}^{n-1}S_{k}\left(k-\left(k+1 \right)  \right)+nS_{n}=nS_{n}-\sum\limits_{k=1}^{n-1}S_{k}$$
+ 		$$\lim_{n \to \infty}\frac{\sum\limits_{k=1}^{n}ka_{k}}{n}=\lim_{n \to \infty}S_{n}-\frac{S_{1}+\cdots+S_{n-1}}{n}=S-S=0$$
+ 	\end{tcolorbox}
+ 	10.设$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$收敛,$0 < p_{n} < \nearrow +\infty$,试证:
+ 	$$\lim\limits_{n \to +\infty} \frac{\sum\limits_{k=1}^{n}p_{k}a_{k}}{p_{n}}=0$$
+ 	 \begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 		{\color{red}证明:}
+ 		设$\displaystyle{S_{n}=\sum_{k=1}^{n}a_{k}},\lim\limits_{n \to \infty}S_{n}=S$,由$Abel$变换       
+ 		$$
+ 		\begin{aligned}
+ 			&\lim\limits_{n \to +\infty} \frac{\sum\limits_{k=1}^{n}p_{k}a_{k}}{p_{n}}
+ 			= \lim\limits_{n \to +\infty} \frac{\sum\limits_{k=1}^{n-1}S_{k}\left(p_{k}-p_{k+1} \right)+S_{n}p_{n} }{p_{n}}\left(\text{使用Stolz} \right) \\
+ 			&=\lim_{n \to \infty }\frac{S_{n-1}\left(p_{n-1}-p_{n} \right)}{p_{n}-p_{n-1}}+S=-S+S=0
+ 		\end{aligned}
+ 		$$   
+ 	\end{tcolorbox}
+ 	11.试证:若$\displaystyle{\sum\limits_{n=1}^{\infty}a_{n}}$收敛,$a_{n} > 0$,$\{a_{n}-a_{n+1}\} \searrow $,则$a_{n} \searrow 0 $,且
+ $\displaystyle{\lim_{n \to \infty }\left(\frac{1}{a_{n+1}}-\frac{1}{a_{n}} \right) =+\infty} $
+ 	 	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 		{\color{red}证明:}
+ 		
+ 		第一
+ 		$\left \{ a_{n}-a_{n+1} \right \} $,且$a_{n}-a_{n+1} \rightarrow 0$,所以$a_{n}-a_{n+1} \ge 0$,即$a_{n} \ge a_{n+1}$,故$a_{n} \searrow 0 $\\
+ 		第二,即证当$n \to \infty$时:
+ 		$$\frac{a_{n}a_{n+1}}{a_{n}-a_{n+1}} \rightarrow 0$$
+     另一方面:
+ 		$$
+ 		\begin{aligned}
+ 		 0 \le \frac{a_{n}a_{n+1}}{a_{n}-a_{n+1}} \le \frac{a_{n}^{2}}{a_{n}-a_{n+1}}&=\frac{1}{a_{n}-a_{n+1}}\sum_{k=n}^{\infty}\left(a_{k}^{2}-a_{k+1}^{2} \right) \\
+ 		 &\le \sum_{k=n}^{\infty}\frac{a_{k}^{2}-a_{k+1}^{2}}{a_{k}-a_{k+1}}=\sum_{k=n}^{\infty}\left(a_{k}+a_{k+1} \right) \\
+ 		 &=R_{n-1}+R_{n} \rightarrow 0  
+ 		\end{aligned}
+ 		$$
+ 		其中$\displaystyle{R_{n-1}=\sum_{k=n}^{\infty}a_{k}}$为收敛级数的$\displaystyle{\sum_{n=1}^{\infty}a_{n}}$的余和
+ 	\end{tcolorbox}
+ 
+ 
+  \end{tcolorbox}
+\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		12.设$a > 0$,$\{p_{n}\}$是一个数列,并且$p_{n} > 0$,$p_{n+1} \ge p_{n}$,证明:
+	$$\sum_{n=1}^{\infty}\frac{p_{n}-p_{n-1}}{p_{n}p_{n-1}^{a}}{\text{收敛}}$$
+	{\color{red}证明.} 分单调有界和单调无界两种情况
+	
+	(1) $\lim\limits_{n \rightarrow \infty} p_{n}=p>0 .$ 此时,
+	$$
+	\sum_{n=1}^{\infty} \frac{p_{n}-p_{n-1}}{p_{n} p_{n-1}^{a}} \le \frac{1}{p_{1} p_{0}^{a}} \sum_{n=1}^{\infty}\left(p_{n}-p_{n-1}\right)=\frac{p-p_{0}}{p_{1} p_{0}^{a}}
+	$$
+	(2) 或 $\lim\limits_{n \rightarrow \infty} p_{n}=+\infty .$ 此时,
+	
+	若 $a \ge 1$, 则 $\exists N$, s.t. $n \ge N \Rightarrow$
+	$$
+	p_{n} \geq 1 \Rightarrow \frac{p_{n}-p_{n-1}}{p_{n} p_{n-1}^{a}} \le \frac{p_{n}-p_{n-1}}{p_{n} p_{n-1}}=\frac{1}{p_{n-1}}-\frac{1}{p_{n}}
+	$$
+	
+	$$
+	\sum_{n=N}^{\infty} \frac{p_{n}-p_{n-1}}{p_{n} p_{n-1}} \le \frac{1}{p_{N-1}}
+	$$
+	若 $0<a<1$, 则
+	$$
+	\begin{aligned}
+		\frac{1}{p_{n-1}^{a}}-\frac{1}{p_{n}^{a}} &=\frac{p_{n}^{a}-p_{n-1}^{a}}{p_{n-1}^{a} p_{n}^{a}}=\frac{a \xi^{a-1}\left(p_{n}-p_{n-1}\right)}{p_{n-1}^{a} p_{n}^{a}} \quad\left(p_{n-1}<\xi<p_{n}\right) \\
+		& \ge \frac{a p_{n-1}^{a-1}\left(p_{n}-p_{n-1}\right)}{p_{n-1}^{a} p_{n}^{a}}=a \frac{p_{n}-p_{n-1}}{p_{n} p_{n-1}^{a}}
+	\end{aligned}
+	$$
+	而
+	$$
+	\sum_{n=1}^{\infty} \frac{p_{n}-p_{n-1}}{p_{n} p_{n-1}^{a}} \le \frac{1}{a} \sum_{n=1}^{\infty}\left(\frac{1}{p_{n-1}^{a}}-\frac{1}{p_{n}^{\alpha}}\right)=\frac{1}{a p_{0}^{a}}
+	$$
+	13.对函数$$\zeta(s)=\sum_{n=1}^{\infty }\frac{1}{n^{s}}  $$ 证明:$\displaystyle{\zeta(s)=s\int_{1}^{+\infty}\frac{[x]}{x^{s+1}}dx}$,其中$[x]$为$x$的整数部分.
+\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	
+	{\color{red}证明:}13.原式 
+	$$
+	\begin{aligned}
+		s \int_{1}^{\infty} \frac{[x]}{x^{s+1}} \mathrm{~d} x &=s \sum_{n=1}^{\infty} \int_{n}^{n+1} \frac{[x]}{x^{s+1}} \mathrm{~d} x \\
+		&=s \sum_{n=1}^{\infty} n \int_{n}^{n+1} \frac{\mathrm{d} x}{x^{s+1}}=\sum_{n=1}^{\infty} n\left[\frac{1}{n^{s}}-\frac{1}{(n+1)^{s}}\right] \\
+		&=\lim _{n \rightarrow \infty} \sum_{k=1}^{n}\left[\frac{1}{k^{s-1}}-\frac{k}{(k+1)^{s}}\right] \\
+		&=\lim _{n \rightarrow \infty}\left[\sum_{k=1}^{n} \frac{1}{k^{s-1}}-\sum_{k=1}^{n} \frac{(k+1)-1}{(k+1)^{s}}\right] \\
+		&=\lim _{n \rightarrow \infty}\left[1-\frac{1}{(n+1)^{s}}+\sum_{k=1}^{n} \frac{1}{(k+1)^{s}}\right]=\sum_{n=1}^{\infty} \frac{1}{n^{s}} .
+	\end{aligned}
+	$$	
+\end{tcolorbox}
+
+\end{tcolorbox}
+\begin{tcolorbox}[title = {综合性问题},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	14.$\left(1\right) $,求证:当$s > 0$时,$$\displaystyle{\int_{1}^{+\infty}\frac{x-[x]}{x^{s+1}}dx}$$收敛,其中$[x]$表示$x$的整数部分.
+	
+	$\left(2\right) $当$s>1$,有:
+	$$\int_{1}^{+\infty}\frac{x-[x]}{x^{s+1}}dx=\frac{1}{s-1}-\frac{1}{s}\sum_{n=1}^{\infty}\frac{1}{n^{s}}$$
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		$\left(1\right) $因为$\displaystyle{0 \le \frac{x-[x]}{x^{s+1}} < \frac{1}{x^{s+1}} }$,而$\displaystyle{\int_{1}^{+\infty}\frac{1}{x^{s+1}}dx}$收敛,故原反常积分收敛.\\
+		$\left(2\right) $ 
+		$$
+		\begin{aligned}
+			\int_{1}^{+\infty}\left( \frac{1}{x^{s}}-\frac{[x]}{x^{s+1}}\right)dx &=\frac{1}{s-1}-\int_{1}^{+\infty}\frac{[x]}{x^{s+1}}dx
+			= \frac{1}{s-1}-\lim_{n \to \infty }\sum_{k=1}^{n}\int_{k}^{k+1}\frac{k}{x^{s+1}}dx \\
+			&=\frac{1}{s-1}-\lim_{n \to \infty }\frac{1}{s}\sum_{k=1}^{n} \left [\frac{k}{(k)^{s}}-\frac{k}{(k+1)^{s}}\right ] \\ 
+			&=\frac{1}{s-1}-\lim_{n \to \infty }\frac{1}{s} \left [1-\frac{1}{(n+1)^{s-1}}+\sum_{k=1}^{n}\frac{1}{(k+1)^{s}} \right]
+			=\frac{1}{s-1}-\frac{1}{s}\sum_{n=1}^{\infty}\frac{1}{n^{s}}
+		\end{aligned}
+		$$
+		特别地,$s=2$时,原式等于$\displaystyle{\frac{1}{2}-\frac{\pi^{2}}{12}}$
+		
+	\end{tcolorbox}
+\begin{tcolorbox}[title =补充,colbacktitle=blue!85!white,colback=white,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	 计算积分$$\int_{0}^{1}x 
+	 \cdot \left[\frac{1}{x}\right]dx$$
+	 解析:做变量替换$\displaystyle{\frac{1}{x}=t}$,原式为$$\int_{1}^{+\infty}\frac{\left[t\right]}{t^{3}}dt$$
+\end{tcolorbox}	
+\end{tcolorbox}	
+\section{\textit{Fourier级数}}
+\begin{tcolorbox}[title = {傅里叶级数预备知识},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 1.定义两个函数$\varphi$,$\psi$在$[a,b]$上可积,且$$\int_{a}^{b}\varphi(x)\psi(x)dx=0$$则称函数$\varphi(x)$,$\psi(x)$在$[a,b]$上是{\textbf{正交}}的.很明显三角函数序列:
+ $$1,cosx,sinx,cos2x,sin2x,\cdots,cosnx,sinnx$$在$[-\pi,\pi]$上具有正交性.具有如下若干关系式:
+
+    \begin{align}
+   \int_{-\pi}^{\pi}1 \cdot connxdx=\int_{-\pi}^{\pi}1 \cdot sinxnxdx=0\\
+    \int_{-\pi}^{\pi} connx \cdot sinnxdx=0\\
+    \int_{-\pi}^{\pi} connx \cdot cosmxdx=0=\int_{-\pi}^{\pi} sinnx \cdot sinmxdx \left(n \ne m \right) 
+    \end{align}
+    但任何一个函数的平方在$[-\pi,\pi]$上积分都不为零,即:
+    $$\int_{-\pi}^{\pi} con^{2}nxdx=\int_{-\pi}^{\pi} sin^{2}nxdx=2\pi,\int_{-\pi}^{\pi}1^{2}dx=2\pi$$
+    \tcblower
+    2.假定$f(x)$以为$2\pi$为周期的函数,有$$f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left( a_{n}sinnx+b_{n}cosnx\right) $$且等式右边级数一致收敛,则有:
+    $$a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)sinxdx,n=0,1,2,\cdots$$
+    $$b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)cosnxdx,n=0,1,2,\cdots$$
+    由定理条件,每一项连续且可积,对$f(x)$逐项积分:
+    $$\int_{-\pi}^{\pi}f(x)dx=\frac{a_{0}}{2}\int_{-\pi}^{\pi}dx+\sum_{n=1}^{\infty}\left(a_{n}\int_{-\pi}^{\pi}cosnxdx+b_{n}\int_{-\pi}^{\pi}sinnxdx \right) $$
+    其中,等式第二项由上面等式可知,都为零	$\displaystyle{\Rightarrow a_{0}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)dx}$
+	\end{tcolorbox}
+
+\begin{tcolorbox}[title = {贝塞尔不等式},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+ 		1.贝塞尔$\left(Bessel \right) $不等式 ,若$f(x)$在$\left[-\pi ,\pi \right]$上可积,则:\\
+ 	$$\frac{a_{0}^{2}}{2}+\sum_{n=1}^{\infty}\left(a_{n}^{2}+b_{n}^{2} \right) \le \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx $$其中$a_{n}$和$b_{n}$是傅里叶系数.
+
+ 	{\color{red}证明:}
+ 	 考虑部分和函数列$$S_{m}(x)=\frac{a_{0}}{2}+\sum_{n=1}^{m}\left( a_{n}cosnx+b_{n}sinnx\right) $$
+ 	 考察积分
+ 	$$
+ 	 \int_{-\pi}^{\pi}\left[f(x)-S_{m}(x)\right]^{2}dx=\int_{-\pi}^{\pi}f^{2}(x)dx-2\int_{-\pi}^{\pi}f(x)S_{m}(x)dx+\int_{-\pi}^{\pi}S_{m}^{2}(x)dx \left( {\text{1}}\right) 
+ 	 $$
+ 	 
+ 	 其中等式第二项:
+ \begin{align*}
+ 	 	\int_{-\pi}^{\pi}f(x)S_{m}(x)dx&=\frac{a_{2}}{2}\int_{-\pi}^{\pi}f(x)dx+\sum_{n=1}^{m}\left(a_{n}\int_{-\pi}^{\pi}f(x)cosnxdx+b_{n}\int_{-\pi}^{\pi}f(x)sinnxdx\right)\\
+ 	 	&=\frac{\pi}{2}a_{0}^{2}+\pi\sum_{n=1}^{m}\left(a_{n}^{2}+b_{n}^{2}\right) 
+ \end{align*}
+  另外对等式第三项化简可得:$$\int_{-\pi}^{\pi}S_{m}^{2}(x)dx=\frac{\pi a_{0}^{2}}{2}+\pi\sum_{n=1}^{m}\left(a_{n}^{2}+b_{n}^{2}\right)$$
+  代入$(1)$式:
+  {\color{red}
+   $$0 \le \int_{-\pi}^{\pi}\left[f(x)-S_{m}(x)\right]^{2}dx =\int_{-\pi}^{\pi}f^{2}(x)dx-\frac{\pi a_{0}^{2}}{2}-\pi\sum_{n=1}^{m}\left(a_{n}^{2}+b_{n}^{2} \right) $$}
+   $$\Rightarrow \frac{ a_{0}^{2}}{2}+\sum_{n=1}^{m}\left(a_{n}^{2}+b_{n}^{2} \right) \le \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx$$
+   不等式右边为有限数,级数部分和有界,故收敛,且有:
+   $$\frac{a_{0}^{2}}{2}+\sum_{n=1}^{\infty}\left(a_{n}^{2}+b_{n}^{2} \right) \le \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx $$	
+\end{tcolorbox}
+\begin{tcolorbox}[title = {帕塞瓦尔等式},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	设$f$在$[-\pi,\pi]$上可积函数,$f$的傅里叶级数在$[-\pi,\pi]$上一致收敛于f,则有:$$\frac{a_{0}^{2}}{2}+\sum_{n=1}^{\infty}\left(a_{n}^{2}+b_{n}^{2} \right) =\frac{1}{\pi}\int_{-\pi}^{\pi}[f(x)]^{2} dx $$
+	标红处,$S_{m}$是$f$的傅里叶级数的部分和,只要证明$$\int_{-\pi}^{\pi}\left[f(x)-S_{m}(x)\right]^{2}dx=0$$
+	{\color{red}而这个根据题意是很容易做到的$\left(\text{证略} \right) $}
+\end{tcolorbox}
+\begin{tcolorbox}[title = {收敛定理},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   若以$2\pi$为周期函数$f$在$\left[-\pi,\pi \right]$按段光滑,则在每一点$x \in \left[-\pi,\pi \right] $的傅里叶级数
+   
+   $$\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left(a_{n}cosnx+b_{n}sinnx \right)$$
+   收敛于$f$在点$x$的左,右极限的算术平均值,即:
+   $$\frac{f\left(x+0 \right)+f\left(x-0 \right)}{2}=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left(a_{n}cosnx+b_{n}sinnx \right)$$
+\end{tcolorbox}
+\section{函数项级数}
+\begin{tcolorbox}[title = {七种收敛判定方法},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   1.$\varepsilon—N$方法(定义法)\\
+   2.上确界求极限方法
+    
+   3.\textit{Cauchy}准则
+    \begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   {\color{blue}\textit{Cauchy}准则的优越性在于,充分之后的'分断'是否能够任意小,无需求出$S_{n}(x)$和$S(x)$,这一点比定义法更加方便}
+   
+   1.函数项级数在区间$I$一致收敛的定义如下:
+   
+   对$\forall \varepsilon >0,\exists N,$对任意$n>N$及任意整数p,对$\forall x \in I$,都有:
+   
+   $$\left|\sum_{k=n+1}^{n+p}u_{k}(x)\right| < \varepsilon$$
+   
+   2.非一致收敛的定义:
+   
+   $\exists \varepsilon_{0},\forall N$,$\exists n > N,\exists x \in I,\exists p \in N$,s.t.:
+   $$\left|\sum_{k=n+1}^{n+p}u_{k}(x)\right| > \varepsilon_{0}$$
+        
+   
+   
+   \end{tcolorbox}
+   
+  {\color{red}以上这三种方法是充要的}
+  
+  4.M判别法
+  
+  5.Abel判别法
+  
+  6.Dirichlet判别法
+  
+  7.Dini定理
+  	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+  		设函数项级数$\displaystyle{\sum_{n=1}^{\infty}u_{n}(x)}$每一项在$\left[a,b \right]$非负且连续,若$S(x)$在$\left[a,b \right]$也是连续函数,则级数$\displaystyle{\sum_{n=1}^{\infty}u_{n}(x)}$在$\left[a,b \right]$一致收敛。
+\end{tcolorbox}
+  {\color{red}以上这四种方法是充分的}  
+ \end{tcolorbox}
+\begin{tcolorbox}[title = {一致收敛的性质},colbacktitle=green!35!black,colback=green!1,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	
+	
+\end{tcolorbox}
+\begin{tcolorbox}[title = {综合性问题及其思路,无解析答案},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	1.若函数列$\left\{f_{n}(x)\right\}$在区间$I$上一致收敛,且每一项都一致连续,则其极限函数$f(x)$也一致连续.
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+     {\color{red}$3\varepsilon$法,一方面根据一致收敛,另一方面根据一致连续,特别地取$n=N$ ,注意x的任意性即可,然后再根据:}
+     
+     $$\left |f(x')-f(x'')\right |\le \left |f(x')-f_{N}(x'') \right |+\left |f_{N}(x')-f_{N}(x'')\right |+\left |f_{N}(x'')-f(x'')  \right | $$
+     \tcblower
+      \vspace{210pt}
+	\end{tcolorbox}
+  
+	  
+	2.设函数列$\left\{f_{n}(x)\right\}$在$\left[a,b\right]$一致收敛于$f(x)$,且每个$f_{n}(x)$均在$\left[a,b\right]$上可积,则$f(x)$在$\left[a,b\right]$上也可积.
+	\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+     {\color{red} 1.根据可积的充要条件,证明,存在分割$T=\left\{\bigtriangleup_{1},\bigtriangleup_{2},\cdots,\bigtriangleup_{n}\right\}$,s.t$$\sum_{T}\omega_{i}^{f}\bigtriangleup x_{i} \le \varepsilon$$
+      其中 $\omega_{i}^{f}$是$f(x)$在$\bigtriangleup_{i}$上的振幅上确界.}
+      
+      2.对于本题,$3\varepsilon$法,先有$f_{n}(x)$一致收敛,然后特别地取n=N,然后再根据$f_{N}(x)$可积,然后再根据:
+      $$\left |f(x')-f(x'')\right |\le \left |f(x')-f_{N}(x'') \right |+\left |f_{N}(x')-f_{N}(x'')\right |+\left |f_{N}(x'')-f(x'')  \right | $$
+        \tcblower
+      \vspace{200pt}
+	\end{tcolorbox}
+
+      
+\end{tcolorbox}
+\begin{tcolorbox}[title = {综合性问题及其思路,无解析答案},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	3.设连续函数列$\left\{f_{n}(x)\right\}$在区间$\left[a,b\right]$上一致收敛于$f(x)$,而$g(x)$在$\left(-\infty,+\infty \right)$上连续.证明:$\left\{g(f_{n}(x)) \right\}$在$\left[a,b\right]$上一致收敛于$g(f(x))$
+		\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}注意到$f_{n}(x)$的连续性,在$\left[a,b\right]$上有界M,$g(x)$在$\left[-M,M \right]$上连续,要说明一致收敛,即:$\forall x \in [a,b]$,上有$\left|g(f_{n}(x)-g(f(x)))\right| < \varepsilon$}
+		\tcblower
+		\vspace{240pt}
+	\end{tcolorbox}
+  4.设可积函数列$\left\{f_{n}(x)\right\}$在闭区间$\left[a,b\right]$一致收敛于$f(x)$,证明:$f(x)$可积,且:
+  $$\lim_{n \to \infty}\int_{a}^{b}f_{n}(x)dx=\int_{a}^{b}f(x)dx$$
+		\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	{\color{red}最关键是证明:$f(x)$可积,由一致收敛性,可得$\displaystyle{\left|f_{n}(x)-f(x)\right|< \frac{\varepsilon}{b-a}}$,所以去证明$f(x)$可积,又由$\left\{f_{n}(x)\right\}$可积,特别地取$n=N$}
+	\tcblower
+	\vspace{240pt}
+
+\end{tcolorbox}
+\end{tcolorbox}
+\begin{tcolorbox}[title = {综合性问题及其思路,无解析答案},colbacktitle=red!25!white,colback=white,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	 证明: 函数项级数 $\sum\limits_{n=1}^{\infty}(-1)^{n} x^{n}(1-x)$ 在 $[0,1]$ 上 绝对收敛并且一致收敘,但不绝对一致收.
+			\begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+		{\color{red}分清绝对收敛和绝对一致收敛的区别,一开始一致收敛的(从而收敛),加了绝对值后还收敛的叫绝对收敛,但不一致收敛,叫做不绝对一致收敛[定义法]}
+	 
+		\vspace{240pt}
+		
+	\end{tcolorbox}
+\end{tcolorbox}
+
+\newpage
+\section{多元函数}
+    1.重极限和累次极限有以下几种关系,自己注意积累反例
+    
+     $\left(1\right)$	两个累次极限存在,但不相等
+     
+     $\left(2\right)$   两个累次极限存在且相等,但重极限不存在 
+     
+     $\left(3\right)$   两个累次极限不存在,但重极限存在
+     
+     $\left(4\right)$   两个累次极限和重极限均不存在
+      $$f(x,y)=y \sin \frac{1}{x}+x \sin \frac{1}{y}$$ 
+     
+     $\left(5\right)$重极限和某一个累次极限存在,而另外一个不存在
+     
+    2.设重极限$\lim\limits_{\left(x,y \right) \to \left(x_{0},y_{0} \right)}f(x,y)=A$存在,则:
+    
+    $\left(1\right)$如果$y \ne y_{0}$,则$\lim\limits_{x \to x_{0}}f(x,y)$存在,则$\lim\limits_{y \to y_{0}}\lim\limits_{x \to x_{0}}f(x,y)=A$
+    
+     $\left(2\right)$如果$x \ne x_{0}$,则$\lim\limits_{y \to y_{0}}f(x,y)$存在,则$\lim\limits_{x \to x_{0}}\lim\limits_{y \to y_{0}}f(x,y)=A$
+     
+     {\color{red}推论}
+     
+     $\Rightarrow$两个累次极限存在但都不相等,则重极限一定不存在。
+     
+     $\Rightarrow$当重极限和某累次极限都存在时,则该累次极限和重极限的值相等。
+     
+     $\Rightarrow$特别地,若重极限和两个累次极限都存在,两个累次极限相等。
+     
+     3.设$\left(x,y\right) $沿任何方向趋近$\left(x_{0},y_{0} \right) $时,总有$f(x,y)$趋近A,则有$$\lim\limits_{(x,y) \to (x_{0},y_{0})}f(x,y)=A$$
+     
+     证明思路分析:反证法,存在一序列${x_{n},y_{n}}$,满足趋近于点$\left(x_{0},y_{0} \right) $,但$\left|f(x_{n},y_{n})-A\right|\ge \varepsilon_{0} $,连接起来,成了一条曲线趋于$(x_{0},y_{0})$,但没有$f(x,y)$趋于A
+     \begin{tcolorbox}[title = {二元函数的连续性},colbacktitle=green!35!black,colback=green!1,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape] 
+     $f(x,y)$为连续函数,可以推到关于$x$,$y$都是连续函数;但是反过来不一定,所以得加条件,加什么条件呢？\\
+     (1)$$f(x,y)=\begin{cases}
+     	\displaystyle {\frac{xy}{x^{2}+y^{2}}} &(x,y)\ne(0,0)\\
+     	0&(x,y)=(0,0)
+     	
+     \end{cases}$$
+ 
+      (2)设$f(x,y)$在区域$D \subseteq  \ R^{2}$上关于x连续,同时关于y连续且对x一致,则$f(x,y)$在$D$上处处连续
+     
+      (3)设$f(x,y)$在区域$D \subseteq  \ R^{2}$上关于x连续,且关于y满足利普希茨条件,则$f(x,y)$在$D$上处处连续
+    \end{tcolorbox}
+下面是几道重要的题目,把握它们的证明思路与一元函数的相似之处
+\begin{tcolorbox}[title = {几道关于多元函数的题目},colbacktitle=red!35!white,colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+	 1.设函数$f(x,y)$在$R^{2}$关于x与y为连续函数,且对其中一个变量是单调的,则$f(x,y)$在$R^{2}$处处连续
+	 
+	 2.设$f(x)$为$\ R^{n}$上的连续函数,且$g(x)$为$\ R^{n}$上的一致连续函数,满足$$\lim\limits_{\left|x \right|  \to \infty}\left[f(x)-g(x) \right] =0$$
+	 证明$f(x)$在$R^{n}$上一致连续
+\end{tcolorbox}
+    \begin{tcolorbox}[title = {解析},colbacktitle=green!35!black,colback=green!1,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+     1.不妨设关于$y$是单调函数,对于$\forall \varepsilon >0,f(x_{0},y_{0})$为连续函数,故$\exists \delta_{1}>0$,有:
+     $$f(x_{0},y_{0}+\delta_{1}) <f(x_{0},y_{0})+\varepsilon $$
+      $$f(x_{0},y_{0}-\delta_{1}) <f(x_{0},y_{0})-\varepsilon $$
+      又因为$\displaystyle{f(x_{0},y_{0}+\pm \delta_{1})}$关于$x$是连续函数,则$\exists $公共的$\delta >0$,$\forall \varepsilon >0$,$$\left|f(x,y_{0}+\pm \delta_{1})-f(x_{0},y_{0}+\pm \delta_{1})\right| < \varepsilon$$
+      从而
+      $$f(x,y)\le f(x,y_{0}+\delta_{1}) \le f(x_{0},y_{0}+\delta_{1})+\varepsilon \le f(x_{0},y_{0})+2\varepsilon$$
+       $$f(x,y)\ge f(x,y_{0}-\delta_{1}) \ge f(x_{0},y_{0}-\delta_{1})-\varepsilon \le f(x_{0},y_{0})-2\varepsilon$$
+       进而有$$\left|f(x,y)-f(x_{0},y_{0}) \right| < 2\varepsilon $$
+       由$(x_{0},y_{0})$的任意性,即得$f(x,y)$处处连续
+      \tcblower
+       2.'杂交放缩'的思想,即让我们证明,对$\forall x',x'' \in R^{n}$,当$\left|x'-x'' \right|<\delta $时,有$\left|f(x')-f(x'') \right| < \varepsilon $
+       
+       一方面,由$g(x)$一致连续可得,$\forall \varepsilon >0$,$\exists \delta_{1}$,当$\left|x'-x'' \right| <\delta_{1} $时,有$$\left|g(x')-g(x'') \right| < \frac{\varepsilon}{3} $$
+       
+       另一方面由$\lim\limits_{\left|x \right|  \to \infty}\left[f(x)-g(x) \right] =0$可得,$\forall \varepsilon$,$\exists M>0$,$\forall \left| x\right| >M$,有$$\left|f(x)-g(x) \right|<\frac{\varepsilon}{3}$$
+      记$D_{1}=\left\lbrace x | \left| x \right| > M  \right\rbrace $,$\forall x',x'' \in D_{1}$,当$\left| x'-x''\right| <\delta $时,有$$\left|f(x')-f(x'') \right| \le \left|f(x')-g(x') \right| +\left|g(x')-g(x'') \right| +\left|g(x'')-f(x'') \right| < \frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon  $$
+      记有限闭区间$D_{2}=\left\lbrace x | \left| x \right| \le M+1  \right\rbrace $,$f(x)$在其上连续,从而一致连续,故对任意$x',x'' \in D_{2}$,$\exists \delta_{2} $
+      
+      当$\left|x'-x'' \right|< \delta_{2} $时,有$$\left|f(x')-f(x'') \right|< \varepsilon $$
+     
+       现取$\delta =min\left\lbrace \delta_{1},\delta_{2},1  \right\rbrace $,对$\forall x',x'' \ in \ R^{n}$,当$\left|x'-x'' \right| <\delta $,$x',x''$会同时属于$D_{1}$或者$D_{2}$,则由上述讨论,可得,$f(x)$为一致连续函数
+     
+\end{tcolorbox}
+      
+      	\begin{tcolorbox}[title =补充,colbacktitle=blue!50,colback=white,coltitle=red,arc = 3mm, outer arc = 3mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+      		1.与数分上册证明一元函数一致连续的方法一样,杂交放缩,这里的是定义在$\ R^{n}$上的多元函数
+      		
+      		2.与一元函数一样,不过多元函数没有确界原理和单调有界原理
+      	\end{tcolorbox}
+      
+     
+ 
+\section{含常量积分}
+   \begin{tcolorbox}[title = {计算问题},colbacktitle=green!35!black,colback=green!1,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   	 $$\int_{0}^{1}sin\left(\frac{1}{x} \right)\frac{x^{b}-x^{a}}{\ln x}dx $$
+   	 \begin{tcolorbox}[colback=white,arc = 1mm, outer arc = 1mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   	 	{\color{red}很明显有}$\displaystyle{\frac{x^{b}-x^{a}}{\ln x}=\int_{a}^{b}x^{y}dy}$
+   	 	,要注意的是在交换顺序时,注意条件,应该考虑被积函数在$[0,1]\times [a,b]$上的连续,在本题中,极限$\lim\limits_{x \rightarrow 0^{+}}sin\left( \frac{1}{x}\right)x^{y} =0$,存在,可以看成$[0,1]\times [a,b]$上的连续函数$[\text{大部分含参量正常积分直接交换顺序}]$
+   	 	\vspace{120pt}	
+   	 \end{tcolorbox}
+   	
+   \end{tcolorbox}
+  
+   \begin{tcolorbox}[title = {关于变量替换dxdy=Jdudv},colbacktitle=green!35!black,colback=green!1,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape]
+   	一般情形:对于变换,$
+   	\left\{\begin{matrix}
+   	   	x=x(u,v) \\
+   		y=y(u,v)
+   	\end{matrix}\right.
+   $,对于任何点$(u,v)$  
+   $$
+   \left\{\begin{matrix}
+   	\bigtriangleup x=x(u+\bigtriangleup u,v+\bigtriangleup v)-x(u,v)\approx x_{u}\bigtriangleup u+ x_{v}\bigtriangleup v \\
+   	\bigtriangleup y=y(u+\bigtriangleup u,v+\bigtriangleup v)-y(u,v)\approx y_{u}\bigtriangleup u+ y_{v}\bigtriangleup v
+   \end{matrix}\right. \Rightarrow  
+\begin{bmatrix}  
+   \bigtriangleup x\\
+   \bigtriangleup y     
+\end{bmatrix} 
+    =\begin{bmatrix}  
+    	x_{u} \quad  x_{v}\\
+        y_{u} \quad  y_{v}   
+    \end{bmatrix}
+\begin{bmatrix}  
+	\bigtriangleup u\\
+	\bigtriangleup v     
+\end{bmatrix}  
+   $$
+     在$uv-$坐标系中,以$\left(\bigtriangleup u,0\right)$和$\left(0,\bigtriangleup v\right)$为边的长方形,面积为$\bigtriangleup u \bigtriangleup v$，两条边进行变换之后:
+   $$
+   \left\{\begin{matrix}
+   	\left(\bigtriangleup u,0 \right) \rightarrow \left(x_{u}\bigtriangleup u,y_{u}\bigtriangleup u \right) \\
+   	\left(0,\bigtriangleup v \right) \rightarrow \left(x_{v}\bigtriangleup v,y_{v}\bigtriangleup v \right)
+   \end{matrix}\right.
+   $$
+   
+   向量外积$$\pm A'=
+   \begin{vmatrix}
+   	x_{u}\bigtriangleup u \quad y_{u}\bigtriangleup u\\
+   	x_{v}\bigtriangleup v \quad y_{v}\bigtriangleup v
+   \end{vmatrix} = \begin{vmatrix}
+   x_{u} \quad y_{u}\\
+   x_{v} \quad y_{v}
+\end{vmatrix}\bigtriangleup u \bigtriangleup v
+   $$
+   
+   所以,记$$ |J|=\begin{vmatrix}
+   	x_{u} \quad y_{u}\\
+   	x_{v} \quad y_{v}
+   \end{vmatrix}\Rightarrow dxdy=|J|dudv$$
+  \tcblower
+  向量场$F$沿曲线$C$的通量是线积分$$\int \textbf{F} \cdot \textbf{n} ds  $$ 
+  其中\textbf{n}是单位法向量,长度是1,方向切向量是\textbf{T}顺时针旋转$\displaystyle{\frac{\pi}{2}}$。 
+
+  (i) 功 :$\displaystyle{\textbf{F} \cdot \textbf{T} ds} = \lim_{\bigtriangleup s \to 0} \sum \textbf{F} \cdot \textbf{T} \bigtriangleup s $
+  
+  (ii)通量: $\displaystyle{\int \textbf{F} \cdot \textbf{n} ds} = \lim_{\bigtriangleup s \to 0} \sum \textbf{F} \cdot \textbf{n} \bigtriangleup s $ ,\textbf{F} $\cdot$ \textbf{n}是\textbf{F}在法向量上的分量
+  
+    通量简单理解,就是给定一个方向\textbf{n}的速度场,取曲线的一小段\textbf{ds},d单位时间内通过这一小段\textbf{ds},流量为:$$\int \textbf{F} \cdot \textbf{n} ds  $$ 
+    
+    给定一个曲线$\left(C \right)$,关于弧长的自然参数表示是: $r=r(s)$
+    切向量是 $\displaystyle{T =\frac{dr}{ds}}$,$dr =T(dx,dy)$,当$(x,y)=(x(t),y(t))$
+    
+    $$\text{切向量}T(x,y)=\frac{\dot{r} }{||r||}=\frac{(x'(t),y'(t))}{\sqrt{x'^{2}(t)+y'^{2}(t)}},\text{顺时转过90度是法向量},n=\frac{\dot{r} }{||r||}=\frac{(-y'(t),x'(t))}{\sqrt{x'^{2}(t)+y'^{2}(t)}}$$
+    
+    $\displaystyle{\frac{ds}{dt}=\sqrt{x'^{2}(t)+y'^{2}(t)}} \Rightarrow \textbf{n}ds=(-y'(t),x'(t))dt=(dy,-dx)$,若$\textbf{F}=Pi+Qj$,则$$\int \textbf{F} \cdot \textbf{n} ds =\int_{C} (P,Q)(dy,-dx)=\int_{C}-Qdx+Pdy$$
+    
+\end{tcolorbox}
+   \begin{tcolorbox}[title = {格林公式的散度形式},colbacktitle=green!35!black,colback=green!1,arc = 2mm, outer arc = 2mm,fonttitle = \itshape, fontupper = \itshape, fontlower = \itshape] 
+	对于向量形式\textbf{F}=Pi+Qj,定义散度:\textbf{divF}=$P_{x}+Q_{y}$,边界为R的封闭曲线C,规定逆时针方向:
+	
+	$$\int_{C} \textbf{F} \cdot \textbf{n} ds =\iint_{R} div \textbf{F}dxdy  $$ 
+	\begin{align*}
+	\int_{0}^{\frac{\pi}{2}}t\left(\frac{sinnt}{sint} \right)^{4}dt &= \left( \int_{0}^{\frac{\pi}{2n}}+\int_{\frac{\pi}{2n}}^{\frac{\pi}{2}}\right)t\left(\frac{sinnt}{sint} \right)^{4}dt\\
+	  & \le \int_{0}^{\frac{\pi}{2n}}tn^{4}dt=\frac{\pi^{2}n^{2}}{8}
+	\end{align*}
+  第二部分用 $sint > \displaystyle{\frac{2t}{\pi}}$
+  
+  
+  $$\int_{\frac{\pi}{2n}}^{\frac{\pi}{2}}t\left(\frac{sinnt}{sint} \right)^{4}dt \le \int_{\frac{\pi}{2n}}^{\frac{\pi}{2}}t \left(\frac{1}{sint} \right)^{4}dt <\int_{\frac{\pi}{2n}}^{\frac{\pi}{2}}t \left(\frac{1}{\frac{2t}{\pi}} \right)^{4}dt = \frac{\pi^{2}(n^{2}-1)}{8}  \sin Mx$$
+        
+	 
+	 
+
+\end{tcolorbox}
+\end{document}
